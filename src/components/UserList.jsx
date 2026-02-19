@@ -1,20 +1,19 @@
-import TrainingPlan from "./TrainingPlan";
-import DietPlan from "./DietPlan";
+import UserCard from "./UserCard";
 
-function UserList({ users }) {
-    return (
-        <div className="header2">
-            <h2>👥 Usuarios Registrados</h2>
-            {users.length == 0 && <p>No hay usuarios aún</p>}
-            {users.map((user) => (
-                <div key={user.id} className="user-card">
-                    <p className="user-name">{user.name}</p>
-                    <TrainingPlan plan={user.plan}/>
-                    <DietPlan dieta={user.plan}/>
-                </div>
-            ))}
-        </div>
-    );
+function UserList({ users = [], setUsers }) {
+  if (users.length === 0) {
+    return <p>No hay usuarios registrados</p>;
+  }
+
+  return (
+    <ul>
+      {users.map((user) => (
+        <li key={user.id}>
+          <UserCard user={user} setUsers={setUsers} />
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default UserList;

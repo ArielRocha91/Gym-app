@@ -1,14 +1,44 @@
-function DietPlan({dieta}) {
+function DietPlan({plan}) {
   const diets = {
-    Principiante: "🍞 Dejar el pan y harinas, tomar 2 litros de agua al día",
-    Intermedio: "🍗🥗 Comer más proteína, más ensaladas y tomar 2 litros de agua al día",
-    Avanzado: "💊 Dejar harinas, aumentar proteína, más ensaladas, 2 litros de agua ademas de suplementos"
+    Principiante: {
+      objetivo: "Habitos saludables",
+      comidas: [
+        "Desayuno: Avena con frutas",
+        "Almuerzo: Pollo + Arroz + Verduras",
+        "Merienda: Fruta o Yogurt",
+        "Cena: Ensalada + proteina ligera"
+      ]
+    },
+    Intermedio: {
+      objetivo: "Habitos saludables",
+      comidas: [
+        "Desayuno: Avena con frutas",
+        "Almuerzo: Pollo + Arroz + Verduras",
+        "Merienda: Fruta o Yogurt",
+        "Cena: Ensalada + proteina ligera"
+      ]
+    },
+    Avanzado: {
+      objetivo: "Habitos saludables",
+      comidas: [
+        "Desayuno: Avena con frutas",
+        "Almuerzo: Pollo + Arroz + Verduras",
+        "Merienda: Fruta o Yogurt",
+        "Cena: Ensalada + proteina ligera"
+      ]
+    },
   };
 
-  return(
-    <p className="training-plan">
-        Dieta: <strong>{diets[dieta]}</strong>
-    </p>
+  const diet = diets[plan];
+  return (
+    <div>
+      <p>Objetivo: <strong>{diet.objetivo}</strong></p>
+      <ul>
+        {diet.comidas.map((comida, index) => (
+          <li key={index}>{comida}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
